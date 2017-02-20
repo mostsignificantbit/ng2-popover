@@ -52,6 +52,9 @@ export class Popover implements OnChanges {
     popoverCloseOnMouseOutside: boolean;
 
     @Input()
+    popoverCloseOnResize: boolean = true;
+
+    @Input()
     popoverDismissTimeout: number = 0;
 
     @Output()
@@ -84,6 +87,13 @@ export class Popover implements OnChanges {
     hideOnHover(): void {
         if (this.popoverCloseOnMouseOutside) return; // don't do anything since not we control this
         if (!this.popoverOnHover) return;
+        if (this.popoverDisabled) return;
+        this.hide();
+    }
+
+    @HostListener('window:resize', ['$event'])
+    onResize(): void {
+        if (!this.popoverCloseOnResize) return;
         if (this.popoverDisabled) return;
         this.hide();
     }
