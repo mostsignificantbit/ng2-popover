@@ -1,6 +1,6 @@
 {
-  "name": "ng2-popover",
-  "version": "0.0.16",
+  "name": "ngx-popover",
+  "version": "0.0.17",
   "description": "Simple popover control for your angular2 applications using bootstrap3.",
   "license": "MIT",
   "readmeFilename": "README.md",
@@ -11,10 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/virtualidentityag/ng2-popover.git"
+    "url": "https://github.com/virtualidentityag/ng2-popover.git"
   },
   "bugs": {
-    "url": "git+https://github.com/virtualidentityag/ng2-popover/issues"
+    "url": "https://github.com/virtualidentityag/ng2-popover/issues"
   },
   "tags": [
     "popover",
