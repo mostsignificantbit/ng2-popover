@@ -1,4 +1,4 @@
-# ngx-popover
+# ngx-popover (ngx-popover fork with popoverCloseOnResize)
 
 Simple popover control for your angular2 applications using bootstrap3. Does not depend of jquery.
 If you don't want to use it without bootstrap - simply create proper css classes. Please star a project if you liked it,
@@ -36,6 +36,7 @@ Import `PopoverModule` in your app and start using a component:
      popoverTitle="Popover header"
      popoverPlacement="top"
      [popoverOnHover]="false"
+     [popoverCloseOnResize]="true"
      [popoverCloseOnClickOutside]="true"
      [popoverCloseOnMouseOutside]="false"
      [popoverDisabled]="false"
@@ -67,6 +68,7 @@ Example of usage with dynamic html content:
     * `[popoverDisabled]="true|false"` Indicates if popover should be disabled. If popover is disabled then it will not be shown. Default is **false**
     * `[popoverAnimation]="true|false"` Indicates if all popover should be shown with animation or not. Default is **true**.
     * `[popoverOnHover]="true|false"` If set to true then popover will open on mouse over instead of mouse click. Default is **false**.
+    * `[popoverCloseOnResize]="true|false"` Indicates if popover should be closed when window was resized. Default is **false**.
     * `[popoverCloseOnMouseOutside]="true|false"` Indicates if popover should be closed when user mouse outside of it. Default is **false**.
     * `[popoverCloseOnClickOutside]="true|false"` Indicates if popover should be closed when user click outside of it. Default is **false**.
     * `[popoverDismissTimeout]="number"` Used to automatically dismiss popover after given amount of time. Default is **0**, means disabled.
