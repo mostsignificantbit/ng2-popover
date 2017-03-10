@@ -30,7 +30,7 @@ import {Popover} from "./Popover";
     bottom: -11px; 
 }
 .popover.bottom .virtual-area {
-    top: -11px; 
+    top: -11px;
 }
 .popover.left .virtual-area {
     right: -11px; 
@@ -43,7 +43,7 @@ import {Popover} from "./Popover";
 export class PopoverContent implements AfterViewInit, OnDestroy {
 
     // -------------------------------------------------------------------------
-    // Inputs / Outputs 
+    // Inputs / Outputs
     // -------------------------------------------------------------------------
 
     // @Input()
@@ -83,7 +83,7 @@ export class PopoverContent implements AfterViewInit, OnDestroy {
     effectivePlacement: string;
 
     // -------------------------------------------------------------------------
-    // Anonymous 
+    // Anonymous
     // -------------------------------------------------------------------------
 
     /**
@@ -114,9 +114,10 @@ export class PopoverContent implements AfterViewInit, OnDestroy {
     listenMouseFunc: any;
     ngAfterViewInit(): void {
         if (this.closeOnClickOutside)
-            this.listenClickFunc = this.renderer.listenGlobal("document", "mousedown", (event: any) => this.onDocumentMouseDown(event));               
+            this.listenClickFunc = this.renderer.listenGlobal("document", "mousedown", (event: any) => this.onDocumentMouseDown(event));
         if (this.closeOnMouseOutside)
-            this.listenMouseFunc = this.renderer.listenGlobal("document", "mouseover", (event: any) => this.onDocumentMouseDown(event));  
+            this.listenMouseFunc = this.renderer.listenGlobal("document", "mouseover", (event: any) => this.onDocumentMouseDown(event));
+
 
         this.show();
         this.cdr.detectChanges();
@@ -136,12 +137,21 @@ export class PopoverContent implements AfterViewInit, OnDestroy {
     show(): void {
         if (!this.popover || !this.popover.getElement())
             return;
-
+        let h = this.popoverDiv.nativeElement.offsetHeight;
         const p = this.positionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.placement);
         this.displayType = "block";
         this.top = p.top;
         this.left = p.left;
         this.isIn = true;
+
+
+        setTimeout(() => {
+            if( h !== this.popoverDiv.nativeElement.offsetHeight){
+                const p = this.positionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.placement);
+                this.top = p.top;
+                this.cdr.markForCheck();
+            }
+        },1);
     }
 
     hide(): void {
