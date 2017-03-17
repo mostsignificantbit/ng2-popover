@@ -27,8 +27,9 @@ var PopoverContent = (function () {
         this.left = -10000;
         this.isIn = false;
         this.displayType = "none";
+        this.visibility = "hidden";
         // -------------------------------------------------------------------------
-        // Anonymous 
+        // Anonymous
         // -------------------------------------------------------------------------
         /**
          * Closes dropdown if user clicks outside of this directive.
@@ -62,13 +63,24 @@ var PopoverContent = (function () {
     // Public Methods
     // -------------------------------------------------------------------------
     PopoverContent.prototype.show = function () {
-        if (!this.popover || !this.popover.getElement())
+        var _this = this;
+        if (!this.popover || !this.popover.getElement()) {
             return;
+        }
+        var h = this.popoverDiv.nativeElement.offsetHeight;
         var p = this.positionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.placement);
         this.displayType = "block";
         this.top = p.top;
         this.left = p.left;
         this.isIn = true;
+        setTimeout(function () {
+            if (h !== _this.popoverDiv.nativeElement.offsetHeight) {
+                var p_1 = _this.positionElements(_this.popover.getElement(), _this.popoverDiv.nativeElement, _this.placement);
+                _this.top = p_1.top;
+            }
+            _this.visibility = 'visible';
+            _this.cdr.markForCheck();
+        }, 1);
     };
     PopoverContent.prototype.hide = function () {
         this.top = -10000;
@@ -242,8 +254,8 @@ __decorate([
 PopoverContent = __decorate([
     core_1.Component({
         selector: "popover-content",
-        template: "\n<div #popoverDiv class=\"popover {{ effectivePlacement }}\"\n     [style.top]=\"top + 'px'\"\n     [style.left]=\"left + 'px'\"\n     [class.in]=\"isIn\"\n     [class.fade]=\"animation\"\n     style=\"display: block\"\n     role=\"popover\">\n    <div [hidden]=\"!closeOnMouseOutside\" class=\"virtual-area\"></div>\n    <div class=\"arrow\"></div> \n    <h3 class=\"popover-title\" [hidden]=\"!title\">{{ title }}</h3>\n    <div class=\"popover-content\">\n        <ng-content></ng-content>\n        {{ content }}\n    </div> \n</div>\n",
-        styles: ["\n.popover .virtual-area {\n    height: 11px;\n    width: 100%;\n    position: absolute;\n}\n.popover.top .virtual-area {\n    bottom: -11px; \n}\n.popover.bottom .virtual-area {\n    top: -11px; \n}\n.popover.left .virtual-area {\n    right: -11px; \n}\n.popover.right .virtual-area {\n    left: -11px; \n}\n"]
+        template: "\n<div #popoverDiv class=\"popover {{ effectivePlacement }}\"\n     [style.top]=\"top + 'px'\"\n     [style.left]=\"left + 'px'\"\n     [style.visibility]=\"visibility\"\n     [class.in]=\"isIn\"\n     [class.fade]=\"animation\"\n     style=\"display: block\"\n     role=\"popover\">\n    <div [hidden]=\"!closeOnMouseOutside\" class=\"virtual-area\"></div>\n    <div class=\"arrow\"></div> \n    <h3 class=\"popover-title\" [hidden]=\"!title\">{{ title }}</h3>\n    <div class=\"popover-content\">\n        <ng-content></ng-content>\n        {{ content }}\n    </div> \n</div>\n",
+        styles: ["\n.popover .virtual-area {\n    height: 11px;\n    width: 100%;\n    position: absolute;\n}\n.popover.top .virtual-area {\n    bottom: -11px; \n}\n.popover.bottom .virtual-area {\n    top: -11px;\n}\n.popover.left .virtual-area {\n    right: -11px; \n}\n.popover.right .virtual-area {\n    left: -11px; \n}\n"]
     }),
     __metadata("design:paramtypes", [core_1.ElementRef,
         core_1.ChangeDetectorRef,

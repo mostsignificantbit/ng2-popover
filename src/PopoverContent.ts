@@ -7,6 +7,7 @@ import {Popover} from "./Popover";
 <div #popoverDiv class="popover {{ effectivePlacement }}"
      [style.top]="top + 'px'"
      [style.left]="left + 'px'"
+     [style.visibility]="visibility"
      [class.in]="isIn"
      [class.fade]="animation"
      style="display: block"
@@ -80,6 +81,7 @@ export class PopoverContent implements AfterViewInit, OnDestroy {
     left: number = -10000;
     isIn: boolean = false;
     displayType: string = "none";
+    visibility: string = "hidden";
     effectivePlacement: string;
 
     // -------------------------------------------------------------------------
@@ -135,8 +137,9 @@ export class PopoverContent implements AfterViewInit, OnDestroy {
     // -------------------------------------------------------------------------
 
     show(): void {
-        if (!this.popover || !this.popover.getElement())
+        if (!this.popover || !this.popover.getElement()) {
             return;
+        }
         let h = this.popoverDiv.nativeElement.offsetHeight;
         const p = this.positionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.placement);
         this.displayType = "block";
@@ -144,13 +147,13 @@ export class PopoverContent implements AfterViewInit, OnDestroy {
         this.left = p.left;
         this.isIn = true;
 
-
         setTimeout(() => {
             if( h !== this.popoverDiv.nativeElement.offsetHeight){
                 const p = this.positionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.placement);
                 this.top = p.top;
-                this.cdr.markForCheck();
             }
+            this.visibility = 'visible';
+            this.cdr.markForCheck();
         },1);
     }
 

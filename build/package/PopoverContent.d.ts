@@ -17,6 +17,7 @@ export declare class PopoverContent implements AfterViewInit, OnDestroy {
     left: number;
     isIn: boolean;
     displayType: string;
+    visibility: string;
     effectivePlacement: string;
     /**
      * Closes dropdown if user clicks outside of this directive.
