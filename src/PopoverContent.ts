@@ -1,5 +1,6 @@
 import {Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef, OnDestroy, ViewChild, EventEmitter, Renderer } from "@angular/core";
 import {Popover} from "./Popover";
+import {log} from "util";
 
 @Component({
     selector: "popover-content",
@@ -140,21 +141,26 @@ export class PopoverContent implements AfterViewInit, OnDestroy {
         if (!this.popover || !this.popover.getElement()) {
             return;
         }
-        let h = this.popoverDiv.nativeElement.offsetHeight;
+
         const p = this.positionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.placement);
         this.displayType = "block";
         this.top = p.top;
         this.left = p.left;
         this.isIn = true;
 
-        setTimeout(() => {
-            if( h !== this.popoverDiv.nativeElement.offsetHeight){
+        let isToSmall = p.left + this.popoverDiv.nativeElement.offsetWidth >= window.innerWidth;
+
+
+        if(isToSmall && this.effectivePlacement === "right") {
+            setTimeout(() => {
                 const p = this.positionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.placement);
                 this.top = p.top;
-            }
-            this.visibility = 'visible';
-            this.cdr.markForCheck();
-        },1);
+                this.visibility = "visible";
+                this.cdr.markForCheck();
+            }, 1);
+        } else {
+            this.visibility = "visible";
+        }
     }
 
     hide(): void {
@@ -179,6 +185,7 @@ export class PopoverContent implements AfterViewInit, OnDestroy {
         let pos0 = positionStrParts[0];
         let pos1 = positionStrParts[1] || "center";
         let hostElPos = appendToBody ? this.offset(hostEl) : this.position(hostEl);
+
         let targetElWidth = targetEl.offsetWidth;
         let targetElHeight = targetEl.offsetHeight;
 
