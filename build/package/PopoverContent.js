@@ -67,20 +67,23 @@ var PopoverContent = (function () {
         if (!this.popover || !this.popover.getElement()) {
             return;
         }
-        var h = this.popoverDiv.nativeElement.offsetHeight;
         var p = this.positionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.placement);
         this.displayType = "block";
         this.top = p.top;
         this.left = p.left;
         this.isIn = true;
-        setTimeout(function () {
-            if (h !== _this.popoverDiv.nativeElement.offsetHeight) {
-                var p_1 = _this.positionElements(_this.popover.getElement(), _this.popoverDiv.nativeElement, _this.placement);
-                _this.top = p_1.top;
-            }
-            _this.visibility = 'visible';
-            _this.cdr.markForCheck();
-        }, 1);
+        var isToSmall = p.left + this.popoverDiv.nativeElement.offsetWidth >= window.innerWidth;
+        if (isToSmall && this.effectivePlacement === "right") {
+            setTimeout(function () {
+                var p = _this.positionElements(_this.popover.getElement(), _this.popoverDiv.nativeElement, _this.placement);
+                _this.top = p.top;
+                _this.visibility = "visible";
+                _this.cdr.markForCheck();
+            }, 1);
+        }
+        else {
+            this.visibility = "visible";
+        }
     };
     PopoverContent.prototype.hide = function () {
         this.top = -10000;
