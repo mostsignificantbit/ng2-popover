@@ -1,6 +1,5 @@
 import {Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef, OnDestroy, ViewChild, EventEmitter, Renderer } from "@angular/core";
 import {Popover} from "./Popover";
-import {log} from "util";
 
 @Component({
     selector: "popover-content",
