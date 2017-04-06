@@ -12,7 +12,7 @@ see [DEMO](http://plnkr.co/edit/tmGQ43m3OGhn8uoAYWua?p=preview).
 
 1. Install npm module:
     
-    `npm install ngx-popover --save`
+    `npm install virtualidentityag/ng2-popover#0.0.21 --save`
 
 2. If you are using system.js you may want to add this into `map` and `package` config:
     

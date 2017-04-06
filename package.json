@@ -4,7 +4,7 @@
   "description": "Simple popover control for your angular2 applications using bootstrap3.",
   "license": "MIT",
   "readmeFilename": "README.md",
-  "main" : "foo.js",
+  "main" : "build/package/index.js",
   "private": true,
   "author": {
     "name": "Umed Khudoiberdiev",
