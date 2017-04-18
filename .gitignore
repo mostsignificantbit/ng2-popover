@@ -1,4 +1,5 @@
 typings/
+build/
 build/es5/
 build/factories/
 node_modules/

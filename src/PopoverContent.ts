@@ -10,8 +10,7 @@ import {Popover} from "./Popover";
      [style.visibility]="visibility"
      [class.in]="isIn"
      [class.fade]="animation"
-     style="display: block"
-     role="popover">
+     style="display: block">
     <div [hidden]="!closeOnMouseOutside" class="virtual-area"></div>
     <div class="arrow"></div> 
     <h3 class="popover-title" [hidden]="!title">{{ title }}</h3>
@@ -150,7 +149,7 @@ export class PopoverContent implements AfterViewInit, OnDestroy {
         let isToSmall = p.left + this.popoverDiv.nativeElement.offsetWidth >= window.innerWidth;
 
 
-        if(isToSmall && this.effectivePlacement === "right") {
+        if (isToSmall && this.effectivePlacement === "right") {
             setTimeout(() => {
                 const p = this.positionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.placement);
                 this.top = p.top;
