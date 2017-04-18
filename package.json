@@ -62,7 +62,7 @@
   },
   "scripts": {
     "tsc": "ngc -p tsconfig-aot.json",
-    "postinstall": "postinstall-build --only-as-dependency tsc \"gulp compile\""
+    "postinstall": "postinstall-build --only-as-dependency tsc \"gulp package\""
   },
   "dependencies": {
     "postinstall-build": "^3.0.1"
