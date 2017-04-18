@@ -4,7 +4,7 @@
   "description": "Simple popover control for your angular2 applications using bootstrap3.",
   "license": "MIT",
   "readmeFilename": "README.md",
-  "main" : "build/package/index.js",
+  "main": "build/package/index.js",
   "private": true,
   "author": {
     "name": "Umed Khudoiberdiev",
@@ -34,7 +34,6 @@
     "@angular/forms": "^2.4.3",
     "@angular/platform-browser": "^2.4.3",
     "@angular/platform-browser-dynamic": "^2.4.3",
-
     "@types/node": "^7.0.0",
     "bootstrap": "^3.3.7",
     "chai": "^3.4.1",
@@ -62,6 +61,10 @@
     "zone.js": "^0.7.6"
   },
   "scripts": {
-    "tsc": "ngc -p tsconfig-aot.json"
+    "tsc": "ngc -p tsconfig-aot.json",
+    "postinstall": "postinstall-build --only-as-dependency gulp compile \"gulp compile\""
+  },
+  "dependencies": {
+    "postinstall-build": "^3.0.1"
   }
 }
