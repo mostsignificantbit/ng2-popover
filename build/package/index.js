@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
+Object.defineProperty(exports, "__esModule", { value: true });
 var common_1 = require("@angular/common");
 var Popover_1 = require("./Popover");
 var PopoverContent_1 = require("./PopoverContent");
