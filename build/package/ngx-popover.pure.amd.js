@@ -61,7 +61,7 @@ define("ngx-popover/PopoverContent", ["require", "exports", "@angular/core"], fu
             var p = this.positionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.placement);
             this.displayType = "block";
             this.top = p.top;
-            this.left = p.left;
+            this.left = (p.left < 0) ? 15 : p.left;
             this.isIn = true;
             var isToSmall = p.left + this.popoverDiv.nativeElement.offsetWidth >= window.innerWidth;
             if (isToSmall && this.effectivePlacement === "right") {

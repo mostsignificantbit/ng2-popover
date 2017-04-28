@@ -96,7 +96,7 @@ export class PopoverContent implements AfterViewInit, OnDestroy {
         if (element.contains(event.target) || this.popover.getElement().contains(event.target)) return;
         this.hide();
         this.onCloseFromOutside.emit(undefined);
-    };
+    }
 
     // -------------------------------------------------------------------------
     // Constructor
@@ -143,13 +143,13 @@ export class PopoverContent implements AfterViewInit, OnDestroy {
         const p = this.positionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.placement);
         this.displayType = "block";
         this.top = p.top;
-        this.left = p.left;
+        this.left = (p.left < 0) ? 15 : p.left;
         this.isIn = true;
 
         let isToSmall = p.left + this.popoverDiv.nativeElement.offsetWidth >= window.innerWidth;
 
 
-        if(isToSmall && this.effectivePlacement === "right") {
+        if (isToSmall && this.effectivePlacement === "right") {
             setTimeout(() => {
                 const p = this.positionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.placement);
                 this.top = p.top;
