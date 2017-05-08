@@ -1,6 +1,6 @@
 # ngx-popover (ngx-popover fork with popoverCloseOnResize)
 
-Simple popover control for your angular2 applications using bootstrap3. Does not depend of jquery.
+Simple popover control for your angular applications using bootstrap3. Does not depend of jquery.
 If you don't want to use it without bootstrap - simply create proper css classes. Please star a project if you liked it,
 or create an issue if you have problems with it.
 
@@ -12,7 +12,7 @@ see [DEMO](http://plnkr.co/edit/tmGQ43m3OGhn8uoAYWua?p=preview).
 
 1. Install npm module:
     
-    `npm install virtualidentityag/ng2-popover#0.0.21 --save`
+    `npm install virtualidentityag/ng2-popover#0.0.23 --save`
 
 2. If you are using system.js you may want to add this into `map` and `package` config:
     
