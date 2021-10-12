@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var PopoverContent = (function () {
+var PopoverContent = /** @class */ (function () {
     // -------------------------------------------------------------------------
     // Constructor
     // -------------------------------------------------------------------------
@@ -46,7 +46,7 @@ var PopoverContent = (function () {
         this.cdr.detectChanges();
     };
     PopoverContent.prototype.ngOnDestroy = function () {
-        if (this.closeOnClickOutside)
+        if (this.closeOnClickOutside && !!this.listenClickFunc)
             this.listenClickFunc();
         if (this.closeOnMouseOutside)
             this.listenMouseFunc();
@@ -178,7 +178,7 @@ var PopoverContent = (function () {
         };
     };
     PopoverContent.prototype.getStyle = function (nativeEl, cssProp) {
-        if (nativeEl.currentStyle)
+        if (nativeEl.currentStyle) // IE
             return nativeEl.currentStyle[cssProp];
         if (window.getComputedStyle)
             return window.getComputedStyle(nativeEl)[cssProp];
@@ -216,29 +216,29 @@ var PopoverContent = (function () {
         }
         return desiredPlacement;
     };
+    PopoverContent.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: "popover-content",
+                    template: "\n<div #popoverDiv class=\"popover {{ effectivePlacement }}\"\n     [style.top]=\"top + 'px'\"\n     [style.left]=\"left + 'px'\"\n     [style.visibility]=\"visibility\"\n     [class.in]=\"isIn\"\n     [class.fade]=\"animation\"\n     style=\"display: block\">\n    <div [hidden]=\"!closeOnMouseOutside\" class=\"virtual-area\"></div>\n    <div class=\"arrow\"></div> \n    <h3 class=\"popover-title\" [hidden]=\"!title\">{{ title }}</h3>\n    <div class=\"popover-content\">\n        <ng-content></ng-content>\n        {{ content }}\n    </div> \n</div>\n",
+                    styles: ["\n.popover .virtual-area {\n    height: 11px;\n    width: 100%;\n    position: absolute;\n}\n.popover.top .virtual-area {\n    bottom: -11px; \n}\n.popover.bottom .virtual-area {\n    top: -11px;\n}\n.popover.left .virtual-area {\n    right: -11px; \n}\n.popover.right .virtual-area {\n    left: -11px; \n}\n"]
+                },] },
+    ];
+    /** @nocollapse */
+    PopoverContent.ctorParameters = function () { return [
+        { type: core_1.ElementRef, },
+        { type: core_1.ChangeDetectorRef, },
+        { type: core_1.Renderer, },
+    ]; };
+    PopoverContent.propDecorators = {
+        'content': [{ type: core_1.Input },],
+        'placement': [{ type: core_1.Input },],
+        'title': [{ type: core_1.Input },],
+        'animation': [{ type: core_1.Input },],
+        'closeOnClickOutside': [{ type: core_1.Input },],
+        'closeOnMouseOutside': [{ type: core_1.Input },],
+        'popoverDiv': [{ type: core_1.ViewChild, args: ["popoverDiv",] },],
+    };
     return PopoverContent;
 }());
-PopoverContent.decorators = [
-    { type: core_1.Component, args: [{
-                selector: "popover-content",
-                template: "\n<div #popoverDiv class=\"popover {{ effectivePlacement }}\"\n     [style.top]=\"top + 'px'\"\n     [style.left]=\"left + 'px'\"\n     [style.visibility]=\"visibility\"\n     [class.in]=\"isIn\"\n     [class.fade]=\"animation\"\n     style=\"display: block\">\n    <div [hidden]=\"!closeOnMouseOutside\" class=\"virtual-area\"></div>\n    <div class=\"arrow\"></div> \n    <h3 class=\"popover-title\" [hidden]=\"!title\">{{ title }}</h3>\n    <div class=\"popover-content\">\n        <ng-content></ng-content>\n        {{ content }}\n    </div> \n</div>\n",
-                styles: ["\n.popover .virtual-area {\n    height: 11px;\n    width: 100%;\n    position: absolute;\n}\n.popover.top .virtual-area {\n    bottom: -11px; \n}\n.popover.bottom .virtual-area {\n    top: -11px;\n}\n.popover.left .virtual-area {\n    right: -11px; \n}\n.popover.right .virtual-area {\n    left: -11px; \n}\n"]
-            },] },
-];
-/** @nocollapse */
-PopoverContent.ctorParameters = function () { return [
-    { type: core_1.ElementRef, },
-    { type: core_1.ChangeDetectorRef, },
-    { type: core_1.Renderer, },
-]; };
-PopoverContent.propDecorators = {
-    'content': [{ type: core_1.Input },],
-    'placement': [{ type: core_1.Input },],
-    'title': [{ type: core_1.Input },],
-    'animation': [{ type: core_1.Input },],
-    'closeOnClickOutside': [{ type: core_1.Input },],
-    'closeOnMouseOutside': [{ type: core_1.Input },],
-    'popoverDiv': [{ type: core_1.ViewChild, args: ["popoverDiv",] },],
-};
 exports.PopoverContent = PopoverContent;
 //# sourceMappingURL=PopoverContent.js.map

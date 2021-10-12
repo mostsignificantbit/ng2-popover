@@ -1,10 +1,10 @@
 {
   "name": "ngx-popover",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "Simple popover control for your angular applications using bootstrap3.",
   "license": "MIT",
   "readmeFilename": "README.md",
-  "main" : "build/package/index.js",
+  "main": "build/package/index.js",
   "private": true,
   "author": {
     "name": "Umed Khudoiberdiev",
@@ -34,7 +34,6 @@
     "@angular/forms": "^4.1.0",
     "@angular/platform-browser": "^4.1.0",
     "@angular/platform-browser-dynamic": "^4.1.0",
-
     "@types/node": "^7.0.15",
     "bootstrap": "^3.3.7",
     "chai": "^3.4.1",
@@ -62,6 +61,10 @@
     "zone.js": "^0.8.9"
   },
   "scripts": {
-    "tsc": "ngc -p tsconfig-aot.json"
+    "tsc": "ngc -p tsconfig-aot.json",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.4"
   }
 }

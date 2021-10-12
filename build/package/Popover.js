@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var PopoverContent_1 = require("./PopoverContent");
-var Popover = (function () {
+var Popover = /** @class */ (function () {
     // -------------------------------------------------------------------------
     // Constructor
     // -------------------------------------------------------------------------
@@ -132,36 +132,36 @@ var Popover = (function () {
     Popover.prototype.getElement = function () {
         return this.viewContainerRef.element.nativeElement;
     };
+    Popover.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: "[popover]",
+                    exportAs: "popover"
+                },] },
+    ];
+    /** @nocollapse */
+    Popover.ctorParameters = function () { return [
+        { type: core_1.ViewContainerRef, },
+        { type: core_1.ComponentFactoryResolver, },
+    ]; };
+    Popover.propDecorators = {
+        'content': [{ type: core_1.Input, args: ["popover",] },],
+        'popoverDisabled': [{ type: core_1.Input },],
+        'popoverAnimation': [{ type: core_1.Input },],
+        'popoverPlacement': [{ type: core_1.Input },],
+        'popoverTitle': [{ type: core_1.Input },],
+        'popoverOnHover': [{ type: core_1.Input },],
+        'popoverCloseOnClickOutside': [{ type: core_1.Input },],
+        'popoverCloseOnMouseOutside': [{ type: core_1.Input },],
+        'popoverCloseOnResize': [{ type: core_1.Input },],
+        'popoverDismissTimeout': [{ type: core_1.Input },],
+        'onShown': [{ type: core_1.Output },],
+        'onHidden': [{ type: core_1.Output },],
+        'showOrHideOnClick': [{ type: core_1.HostListener, args: ["click",] },],
+        'showOnHover': [{ type: core_1.HostListener, args: ["focusin",] }, { type: core_1.HostListener, args: ["mouseenter",] },],
+        'hideOnHover': [{ type: core_1.HostListener, args: ["focusout",] }, { type: core_1.HostListener, args: ["mouseleave",] },],
+        'onResize': [{ type: core_1.HostListener, args: ['window:resize', ['$event'],] },],
+    };
     return Popover;
 }());
-Popover.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: "[popover]",
-                exportAs: "popover"
-            },] },
-];
-/** @nocollapse */
-Popover.ctorParameters = function () { return [
-    { type: core_1.ViewContainerRef, },
-    { type: core_1.ComponentFactoryResolver, },
-]; };
-Popover.propDecorators = {
-    'content': [{ type: core_1.Input, args: ["popover",] },],
-    'popoverDisabled': [{ type: core_1.Input },],
-    'popoverAnimation': [{ type: core_1.Input },],
-    'popoverPlacement': [{ type: core_1.Input },],
-    'popoverTitle': [{ type: core_1.Input },],
-    'popoverOnHover': [{ type: core_1.Input },],
-    'popoverCloseOnClickOutside': [{ type: core_1.Input },],
-    'popoverCloseOnMouseOutside': [{ type: core_1.Input },],
-    'popoverCloseOnResize': [{ type: core_1.Input },],
-    'popoverDismissTimeout': [{ type: core_1.Input },],
-    'onShown': [{ type: core_1.Output },],
-    'onHidden': [{ type: core_1.Output },],
-    'showOrHideOnClick': [{ type: core_1.HostListener, args: ["click",] },],
-    'showOnHover': [{ type: core_1.HostListener, args: ["focusin",] }, { type: core_1.HostListener, args: ["mouseenter",] },],
-    'hideOnHover': [{ type: core_1.HostListener, args: ["focusout",] }, { type: core_1.HostListener, args: ["mouseleave",] },],
-    'onResize': [{ type: core_1.HostListener, args: ['window:resize', ['$event'],] },],
-};
 exports.Popover = Popover;
 //# sourceMappingURL=Popover.js.map

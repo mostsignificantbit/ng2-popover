@@ -1,6 +1,6 @@
 System.register("ngx-popover/PopoverContent", ["@angular/core"], function (exports_1, context_1) {
-    var __moduleName = context_1 && context_1.id;
     var core_1, PopoverContent;
+    var __moduleName = context_1 && context_1.id;
     return {
         setters: [
             function (core_1_1) {
@@ -8,7 +8,7 @@ System.register("ngx-popover/PopoverContent", ["@angular/core"], function (expor
             }
         ],
         execute: function () {
-            PopoverContent = (function () {
+            PopoverContent = /** @class */ (function () {
                 // -------------------------------------------------------------------------
                 // Constructor
                 // -------------------------------------------------------------------------
@@ -185,7 +185,7 @@ System.register("ngx-popover/PopoverContent", ["@angular/core"], function (expor
                     };
                 };
                 PopoverContent.prototype.getStyle = function (nativeEl, cssProp) {
-                    if (nativeEl.currentStyle)
+                    if (nativeEl.currentStyle) // IE
                         return nativeEl.currentStyle[cssProp];
                     if (window.getComputedStyle)
                         return window.getComputedStyle(nativeEl)[cssProp];
@@ -223,53 +223,53 @@ System.register("ngx-popover/PopoverContent", ["@angular/core"], function (expor
                     }
                     return desiredPlacement;
                 };
+                __decorate([
+                    core_1.Input(),
+                    __metadata("design:type", String)
+                ], PopoverContent.prototype, "content", void 0);
+                __decorate([
+                    core_1.Input(),
+                    __metadata("design:type", String)
+                ], PopoverContent.prototype, "placement", void 0);
+                __decorate([
+                    core_1.Input(),
+                    __metadata("design:type", String)
+                ], PopoverContent.prototype, "title", void 0);
+                __decorate([
+                    core_1.Input(),
+                    __metadata("design:type", Boolean)
+                ], PopoverContent.prototype, "animation", void 0);
+                __decorate([
+                    core_1.Input(),
+                    __metadata("design:type", Boolean)
+                ], PopoverContent.prototype, "closeOnClickOutside", void 0);
+                __decorate([
+                    core_1.Input(),
+                    __metadata("design:type", Boolean)
+                ], PopoverContent.prototype, "closeOnMouseOutside", void 0);
+                __decorate([
+                    core_1.ViewChild("popoverDiv"),
+                    __metadata("design:type", core_1.ElementRef)
+                ], PopoverContent.prototype, "popoverDiv", void 0);
+                PopoverContent = __decorate([
+                    core_1.Component({
+                        selector: "popover-content",
+                        template: "\n<div #popoverDiv class=\"popover {{ effectivePlacement }}\"\n     [style.top]=\"top + 'px'\"\n     [style.left]=\"left + 'px'\"\n     [style.visibility]=\"visibility\"\n     [class.in]=\"isIn\"\n     [class.fade]=\"animation\"\n     style=\"display: block\">\n    <div [hidden]=\"!closeOnMouseOutside\" class=\"virtual-area\"></div>\n    <div class=\"arrow\"></div> \n    <h3 class=\"popover-title\" [hidden]=\"!title\">{{ title }}</h3>\n    <div class=\"popover-content\">\n        <ng-content></ng-content>\n        {{ content }}\n    </div> \n</div>\n",
+                        styles: ["\n.popover .virtual-area {\n    height: 11px;\n    width: 100%;\n    position: absolute;\n}\n.popover.top .virtual-area {\n    bottom: -11px; \n}\n.popover.bottom .virtual-area {\n    top: -11px;\n}\n.popover.left .virtual-area {\n    right: -11px; \n}\n.popover.right .virtual-area {\n    left: -11px; \n}\n"]
+                    }),
+                    __metadata("design:paramtypes", [core_1.ElementRef,
+                        core_1.ChangeDetectorRef,
+                        core_1.Renderer])
+                ], PopoverContent);
                 return PopoverContent;
             }());
-            __decorate([
-                core_1.Input(),
-                __metadata("design:type", String)
-            ], PopoverContent.prototype, "content", void 0);
-            __decorate([
-                core_1.Input(),
-                __metadata("design:type", String)
-            ], PopoverContent.prototype, "placement", void 0);
-            __decorate([
-                core_1.Input(),
-                __metadata("design:type", String)
-            ], PopoverContent.prototype, "title", void 0);
-            __decorate([
-                core_1.Input(),
-                __metadata("design:type", Boolean)
-            ], PopoverContent.prototype, "animation", void 0);
-            __decorate([
-                core_1.Input(),
-                __metadata("design:type", Boolean)
-            ], PopoverContent.prototype, "closeOnClickOutside", void 0);
-            __decorate([
-                core_1.Input(),
-                __metadata("design:type", Boolean)
-            ], PopoverContent.prototype, "closeOnMouseOutside", void 0);
-            __decorate([
-                core_1.ViewChild("popoverDiv"),
-                __metadata("design:type", core_1.ElementRef)
-            ], PopoverContent.prototype, "popoverDiv", void 0);
-            PopoverContent = __decorate([
-                core_1.Component({
-                    selector: "popover-content",
-                    template: "\n<div #popoverDiv class=\"popover {{ effectivePlacement }}\"\n     [style.top]=\"top + 'px'\"\n     [style.left]=\"left + 'px'\"\n     [style.visibility]=\"visibility\"\n     [class.in]=\"isIn\"\n     [class.fade]=\"animation\"\n     style=\"display: block\">\n    <div [hidden]=\"!closeOnMouseOutside\" class=\"virtual-area\"></div>\n    <div class=\"arrow\"></div> \n    <h3 class=\"popover-title\" [hidden]=\"!title\">{{ title }}</h3>\n    <div class=\"popover-content\">\n        <ng-content></ng-content>\n        {{ content }}\n    </div> \n</div>\n",
-                    styles: ["\n.popover .virtual-area {\n    height: 11px;\n    width: 100%;\n    position: absolute;\n}\n.popover.top .virtual-area {\n    bottom: -11px; \n}\n.popover.bottom .virtual-area {\n    top: -11px;\n}\n.popover.left .virtual-area {\n    right: -11px; \n}\n.popover.right .virtual-area {\n    left: -11px; \n}\n"]
-                }),
-                __metadata("design:paramtypes", [core_1.ElementRef,
-                    core_1.ChangeDetectorRef,
-                    core_1.Renderer])
-            ], PopoverContent);
             exports_1("PopoverContent", PopoverContent);
         }
     };
 });
 System.register("ngx-popover/Popover", ["@angular/core", "ngx-popover/PopoverContent"], function (exports_2, context_2) {
-    var __moduleName = context_2 && context_2.id;
     var core_2, PopoverContent_1, Popover;
+    var __moduleName = context_2 && context_2.id;
     return {
         setters: [
             function (core_2_1) {
@@ -280,7 +280,7 @@ System.register("ngx-popover/Popover", ["@angular/core", "ngx-popover/PopoverCon
             }
         ],
         execute: function () {
-            Popover = (function () {
+            Popover = /** @class */ (function () {
                 // -------------------------------------------------------------------------
                 // Constructor
                 // -------------------------------------------------------------------------
@@ -410,97 +410,97 @@ System.register("ngx-popover/Popover", ["@angular/core", "ngx-popover/PopoverCon
                 Popover.prototype.getElement = function () {
                     return this.viewContainerRef.element.nativeElement;
                 };
+                __decorate([
+                    core_2.Input("popover"),
+                    __metadata("design:type", Object)
+                ], Popover.prototype, "content", void 0);
+                __decorate([
+                    core_2.Input(),
+                    __metadata("design:type", Boolean)
+                ], Popover.prototype, "popoverDisabled", void 0);
+                __decorate([
+                    core_2.Input(),
+                    __metadata("design:type", Boolean)
+                ], Popover.prototype, "popoverAnimation", void 0);
+                __decorate([
+                    core_2.Input(),
+                    __metadata("design:type", String)
+                ], Popover.prototype, "popoverPlacement", void 0);
+                __decorate([
+                    core_2.Input(),
+                    __metadata("design:type", String)
+                ], Popover.prototype, "popoverTitle", void 0);
+                __decorate([
+                    core_2.Input(),
+                    __metadata("design:type", Boolean)
+                ], Popover.prototype, "popoverOnHover", void 0);
+                __decorate([
+                    core_2.Input(),
+                    __metadata("design:type", Boolean)
+                ], Popover.prototype, "popoverCloseOnClickOutside", void 0);
+                __decorate([
+                    core_2.Input(),
+                    __metadata("design:type", Boolean)
+                ], Popover.prototype, "popoverCloseOnMouseOutside", void 0);
+                __decorate([
+                    core_2.Input(),
+                    __metadata("design:type", Boolean)
+                ], Popover.prototype, "popoverCloseOnResize", void 0);
+                __decorate([
+                    core_2.Input(),
+                    __metadata("design:type", Number)
+                ], Popover.prototype, "popoverDismissTimeout", void 0);
+                __decorate([
+                    core_2.Output(),
+                    __metadata("design:type", Object)
+                ], Popover.prototype, "onShown", void 0);
+                __decorate([
+                    core_2.Output(),
+                    __metadata("design:type", Object)
+                ], Popover.prototype, "onHidden", void 0);
+                __decorate([
+                    core_2.HostListener("click"),
+                    __metadata("design:type", Function),
+                    __metadata("design:paramtypes", []),
+                    __metadata("design:returntype", void 0)
+                ], Popover.prototype, "showOrHideOnClick", null);
+                __decorate([
+                    core_2.HostListener("focusin"),
+                    core_2.HostListener("mouseenter"),
+                    __metadata("design:type", Function),
+                    __metadata("design:paramtypes", []),
+                    __metadata("design:returntype", void 0)
+                ], Popover.prototype, "showOnHover", null);
+                __decorate([
+                    core_2.HostListener("focusout"),
+                    core_2.HostListener("mouseleave"),
+                    __metadata("design:type", Function),
+                    __metadata("design:paramtypes", []),
+                    __metadata("design:returntype", void 0)
+                ], Popover.prototype, "hideOnHover", null);
+                __decorate([
+                    core_2.HostListener('window:resize', ['$event']),
+                    __metadata("design:type", Function),
+                    __metadata("design:paramtypes", []),
+                    __metadata("design:returntype", void 0)
+                ], Popover.prototype, "onResize", null);
+                Popover = __decorate([
+                    core_2.Directive({
+                        selector: "[popover]",
+                        exportAs: "popover"
+                    }),
+                    __metadata("design:paramtypes", [core_2.ViewContainerRef,
+                        core_2.ComponentFactoryResolver])
+                ], Popover);
                 return Popover;
             }());
-            __decorate([
-                core_2.Input("popover"),
-                __metadata("design:type", Object)
-            ], Popover.prototype, "content", void 0);
-            __decorate([
-                core_2.Input(),
-                __metadata("design:type", Boolean)
-            ], Popover.prototype, "popoverDisabled", void 0);
-            __decorate([
-                core_2.Input(),
-                __metadata("design:type", Boolean)
-            ], Popover.prototype, "popoverAnimation", void 0);
-            __decorate([
-                core_2.Input(),
-                __metadata("design:type", String)
-            ], Popover.prototype, "popoverPlacement", void 0);
-            __decorate([
-                core_2.Input(),
-                __metadata("design:type", String)
-            ], Popover.prototype, "popoverTitle", void 0);
-            __decorate([
-                core_2.Input(),
-                __metadata("design:type", Boolean)
-            ], Popover.prototype, "popoverOnHover", void 0);
-            __decorate([
-                core_2.Input(),
-                __metadata("design:type", Boolean)
-            ], Popover.prototype, "popoverCloseOnClickOutside", void 0);
-            __decorate([
-                core_2.Input(),
-                __metadata("design:type", Boolean)
-            ], Popover.prototype, "popoverCloseOnMouseOutside", void 0);
-            __decorate([
-                core_2.Input(),
-                __metadata("design:type", Boolean)
-            ], Popover.prototype, "popoverCloseOnResize", void 0);
-            __decorate([
-                core_2.Input(),
-                __metadata("design:type", Number)
-            ], Popover.prototype, "popoverDismissTimeout", void 0);
-            __decorate([
-                core_2.Output(),
-                __metadata("design:type", Object)
-            ], Popover.prototype, "onShown", void 0);
-            __decorate([
-                core_2.Output(),
-                __metadata("design:type", Object)
-            ], Popover.prototype, "onHidden", void 0);
-            __decorate([
-                core_2.HostListener("click"),
-                __metadata("design:type", Function),
-                __metadata("design:paramtypes", []),
-                __metadata("design:returntype", void 0)
-            ], Popover.prototype, "showOrHideOnClick", null);
-            __decorate([
-                core_2.HostListener("focusin"),
-                core_2.HostListener("mouseenter"),
-                __metadata("design:type", Function),
-                __metadata("design:paramtypes", []),
-                __metadata("design:returntype", void 0)
-            ], Popover.prototype, "showOnHover", null);
-            __decorate([
-                core_2.HostListener("focusout"),
-                core_2.HostListener("mouseleave"),
-                __metadata("design:type", Function),
-                __metadata("design:paramtypes", []),
-                __metadata("design:returntype", void 0)
-            ], Popover.prototype, "hideOnHover", null);
-            __decorate([
-                core_2.HostListener('window:resize', ['$event']),
-                __metadata("design:type", Function),
-                __metadata("design:paramtypes", []),
-                __metadata("design:returntype", void 0)
-            ], Popover.prototype, "onResize", null);
-            Popover = __decorate([
-                core_2.Directive({
-                    selector: "[popover]",
-                    exportAs: "popover"
-                }),
-                __metadata("design:paramtypes", [core_2.ViewContainerRef,
-                    core_2.ComponentFactoryResolver])
-            ], Popover);
             exports_2("Popover", Popover);
         }
     };
 });
 System.register("ngx-popover/index", ["@angular/common", "ngx-popover/Popover", "ngx-popover/PopoverContent", "@angular/core"], function (exports_3, context_3) {
-    var __moduleName = context_3 && context_3.id;
     var common_1, Popover_1, PopoverContent_2, core_3, PopoverModule;
+    var __moduleName = context_3 && context_3.id;
     var exportedNames_1 = {
         "PopoverModule": true
     };
@@ -529,29 +529,29 @@ System.register("ngx-popover/index", ["@angular/common", "ngx-popover/Popover", 
             }
         ],
         execute: function () {
-            PopoverModule = (function () {
+            PopoverModule = /** @class */ (function () {
                 function PopoverModule() {
                 }
+                PopoverModule = __decorate([
+                    core_3.NgModule({
+                        imports: [
+                            common_1.CommonModule
+                        ],
+                        declarations: [
+                            PopoverContent_2.PopoverContent,
+                            Popover_1.Popover,
+                        ],
+                        exports: [
+                            PopoverContent_2.PopoverContent,
+                            Popover_1.Popover,
+                        ],
+                        entryComponents: [
+                            PopoverContent_2.PopoverContent
+                        ]
+                    })
+                ], PopoverModule);
                 return PopoverModule;
             }());
-            PopoverModule = __decorate([
-                core_3.NgModule({
-                    imports: [
-                        common_1.CommonModule
-                    ],
-                    declarations: [
-                        PopoverContent_2.PopoverContent,
-                        Popover_1.Popover,
-                    ],
-                    exports: [
-                        PopoverContent_2.PopoverContent,
-                        Popover_1.Popover,
-                    ],
-                    entryComponents: [
-                        PopoverContent_2.PopoverContent
-                    ]
-                })
-            ], PopoverModule);
             exports_3("PopoverModule", PopoverModule);
         }
     };
